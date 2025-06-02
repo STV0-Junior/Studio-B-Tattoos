@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio B Tattoos - Tallahassee's Premier Tattoo Studio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      /* Reset and global styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Helvetica", "Arial", sans-serif;
+      }
+
+      body {
+        background-color: #1c1c1c;
+        color: #ffffff;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Header */
+      header {
+        background-color: #000000;
+        padding: 1.5rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        border-bottom: 1px solid #3d3d3d;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #ffffff;
+      }
+
+      .logo span {
+        color: #c5a059;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 2rem;
+      }
+
+      nav ul li a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: color 0.3s;
+        position: relative;
+        padding: 5px 0;
+      }
+
+      nav ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #c5a059;
+        transition: width 0.3s ease;
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+        font-size: 1.8rem;
+        color: #fff;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.7)
+          ),
+          url("/fotos/Captura\ de\ tela\ 2025-06-02\ 102446.png");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin-top: 80px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: #c5a059;
+        color: #000000;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      }
+
+      .btn:hover {
+        background-color: #ffffff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+      }
+
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      /* About Section */
+      .about {
+        padding: 5rem 0;
+        background-color: #1c1c1c;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+      }
+
+      .section-title span {
+        color: #c5a059;
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: #c5a059;
+      }
+
+      .about-text p {
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+
+      .about-image {
+        flex: 1;
+      }
+
+      .about-image img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      
+      /* Estilos do carrossel */
+      .about-carousel {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .carousel-container {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        height: 100%;
+      }
+
+      .carousel-slide {
+        min-width: 100%;
+        height: 350px; /* Ajuste conforme necessário */
+      }
+
+      .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .carousel-nav {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        z-index: 10;
+      }
+
+      .carousel-prev,
+      .carousel-next {
+        background: rgba(197, 160, 89, 0.7);
+        color: #000;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        transition: all 0.3s;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .carousel-prev:hover,
+      .carousel-next:hover {
+        background: #c5a059;
+      }
+
+      .carousel-dots {
+        display: flex;
+        gap: 8px;
+      }
+
+      .carousel-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .carousel-dot.active {
+        background: #c5a059;
+        transform: scale(1.2);
+      }
+
+      /* Artists Section */
+      .artists {
+        padding: 5rem 0;
+        background-color: #000000;
+      }
+
+      .artists-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .artist-card {
+        background-color: #1c1c1c;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s;
+        position: relative;
+      }
+
+      .artist-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .artist-image {
+        height: 350px;
+        overflow: hidden;
+      }
+
+      .artist-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .artist-card:hover .artist-image img {
+        transform: scale(1.05);
+      }
+
+      .artist-info {
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .artist-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #c5a059;
+      }
+
+      .artist-info p {
+        color: #aaaaaa;
+        margin-bottom: 10px;
+      }
+
+      .artist-social {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .artist-social a {
+        color: #c5a059;
+        font-size: 1.2rem;
+        transition: all 0.3s;
+      }
+
+      .artist-social a:hover {
+        color: #fff;
+        transform: translateY(-3px);
+      }
+
+      /* Portfolio Section */
+      .portfolio {
+        padding: 5rem 0;
+        background-color: #1c1c1c;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        height: 250px;
+        border-radius: 8px;
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .portfolio-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+
+      .portfolio-overlay h3 {
+        color: #c5a059;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .portfolio-overlay p {
+        color: #fff;
+        font-size: 0.9rem;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 5rem 0;
+        background-color: #000000;
+      }
+
+      .contact-container {
+        display: flex;
+        gap: 3rem;
+      }
+
+      .contact-info {
+        flex: 1;
+      }
+
+      .contact-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: #c5a059;
+      }
+
+      .contact-info p {
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-details {
+        margin-bottom: 2rem;
+      }
+
+      .contact-details div {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+
+      .contact-details i {
+        margin-right: 1rem;
+        color: #c5a059;
+        font-size: 1.2rem;
+        min-width: 25px;
+      }
+
+      .contact-form {
+        flex: 1;
+        background-color: #1c1c1c;
+        padding: 2rem;
+        border-radius: 8px;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #c5a059;
+        font-weight: bold;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.8rem;
+        background-color: #3d3d3d;
+        border: 1px solid #555;
+        border-radius: 4px;
+        color: #ffffff;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        border-color: #c5a059;
+        outline: none;
+      }
+
+      .form-group textarea {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .map {
+        margin-top: 2rem;
+      }
+
+      .map iframe {
+        width: 100%;
+        height: 300px;
+        border: none;
+        border-radius: 8px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #000000;
+        padding: 2rem 0;
+        text-align: center;
+        border-top: 1px solid #3d3d3d;
+      }
+
+      .social-links {
+        margin-bottom: 1.5rem;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #1c1c1c;
+        color: #c5a059;
+        border-radius: 50%;
+        margin: 0 0.5rem;
+        font-size: 1.2rem;
+        transition: all 0.3s;
+      }
+
+      .social-links a:hover {
+        background-color: #c5a059;
+        color: #000;
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        color: #aaaaaa;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+      }
+
+      /* Toast Notification */
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #c5a059;
+        color: #000;
+        padding: 15px 25px;
+        border-radius: 4px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.5s ease;
+        z-index: 2000;
+      }
+
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Responsividade */
+      @media (max-width: 992px) {
+        .hero-content h1 {
+          font-size: 3rem;
+        }
+        
+        .about-content {
+          flex-direction: column;
+        }
+        
+        .contact-container {
+          flex-direction: column;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .menu-toggle {
+          display: block;
+        }
+
+        nav {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: #000;
+          display: none;
+          padding: 1rem 0;
+          border-bottom: 1px solid #3d3d3d;
+        }
+
+        nav.active {
+          display: block;
+        }
+
+        nav ul {
+          flex-direction: column;
+          width: 100%;
+        }
+
+        nav ul li {
+          margin: 0;
+          text-align: center;
+        }
+
+        nav ul li a {
+          display: block;
+          padding: 1rem 0;
+          width: 100%;
+        }
+        
+        .hero {
+          margin-top: 70px;
+        }
+        
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+        
+        .section-title {
+          font-size: 2rem;
+        }
+        
+        .contact-form {
+          padding: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+        
+        .hero-content p {
+          font-size: 1rem;
+        }
+        
+        .carousel-slide {
+          height: 250px;
+        }
+      }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">Studio <span>B</span> Tattoos</div>
+          <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </div>
+          <nav>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#artists">Artists</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div>
+            <h1>Art for Your Skin</h1>
+            <p>
+              At Studio B Tattoos in Tallahassee, we transform your vision into
+              permanent art with professionalism and creativity.
+            </p>
+            <a href="#contact" class="btn">Book Your Session</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="container">
+        <h2 class="section-title">About Our <span>Studio</span></h2>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Excellence in Tattooing Since 2015</h3>
+            <p>
+              Studio B Tattoos was founded with the mission to create
+              high-quality body art in a professional and safe environment.
+            </p>
+            <p>
+              Our artists are highly skilled and specialise in various styles,
+              from traditional to realism, ensuring each client receives
+              personalised and unique work.
+            </p>
+            <p>
+              We prioritise hygiene, safety, and customer satisfaction in all
+              aspects of our work. Our studio is state-licensed and follows strict sterilization protocols.
+            </p>
+            <p>
+              Visit us to experience the perfect blend of artistic talent and professional service.
+            </p>
+          </div>
+
+          <!-- Carrossel -->
+          <div class="about-carousel">
+            <div class="carousel-container">
+              <div class="carousel-slide">
+                <img
+                  src="/fotos/Captura de tela 2025-06-02 103339.png"
+                  alt="Studio interior photo 1"
+                />
+              </div>
+              <div class="carousel-slide">
+                <img
+                  src="/fotos/Captura de tela 2025-06-02 103018.png"
+                  alt="Studio interior photo 2"
+                />
+              </div>
+              <div class="carousel-slide">
+                <img
+                  src="/fotos/Captura de tela 2025-06-02 103247.png"
+                  alt="Studio interior photo 3"
+                />
+              </div>
+            </div>
+            <!-- Navegação do carrossel -->
+            <div class="carousel-nav">
+              <button class="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+              <div class="carousel-dots"></div>
+              <button class="carousel-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artists Section -->
+    <section class="artists" id="artists">
+      <div class="container">
+        <h2 class="section-title">Our <span>Artists</span></h2>
+        <div class="artists-grid">
+          <!-- Artist 1 -->
+          <div class="artist-card">
+            <div class="artist-image">
+              <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop" alt="Artist James" />
+            </div>
+            <div class="artist-info">
+              <h3>James</h3>
+              <p>Specialises in Realism</p>
+              <p>10+ years experience</p>
+              <div class="artist-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artist 2 -->
+          <div class="artist-card">
+            <div class="artist-image">
+              <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1974&auto=format&fit=crop" alt="Artist Emily" />
+            </div>
+            <div class="artist-info">
+              <h3>Emily</h3>
+              <p>Specialises in Fine Line</p>
+              <p>8+ years experience</p>
+              <div class="artist-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artist 3 -->
+          <div class="artist-card">
+            <div class="artist-image">
+              <img src="https://images.unsplash.com/photo-1549068106-b024baf5062d?q=80&w=1974&auto=format&fit=crop" alt="Artist Daniel" />
+            </div>
+            <div class="artist-info">
+              <h3>Daniel</h3>
+              <p>Specialises in Traditional</p>
+              <p>12+ years experience</p>
+              <div class="artist-social">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <h2 class="section-title">Our <span>Portfolio</span></h2>
+        <div class="portfolio-grid">
+          <!-- Item 1 -->
+          <div class="portfolio-item">
+            <img src="/fotos/realismo.jpg" alt="Realism Tattoo" />
+            <div class="portfolio-overlay">
+              <h3>Realism</h3>
+              <p>Photorealistic designs that capture every detail</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="portfolio-item">
+            <img src="/fotos/tradicional.jpg" alt="Traditional Tattoo" />
+            <div class="portfolio-overlay">
+              <h3>Traditional</h3>
+              <p>Classic designs with bold lines and vibrant colors</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="portfolio-item">
+            <img src="/fotos/fine line.jpg" alt="Fine Line Tattoo" />
+            <div class="portfolio-overlay">
+              <h3>Fine Line</h3>
+              <p>Delicate and intricate designs with precision lines</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="portfolio-item">
+            <img src="/fotos/blackwork.webp" alt="Blackwork Tattoo" />
+            <div class="portfolio-overlay">
+              <h3>Blackwork</h3>
+              <p>Bold designs using only black ink</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="portfolio-item">
+            <img src="/fotos/geometric.jpeg" alt="Geometric Tattoo" />
+            <div class="portfolio-overlay">
+              <h3>Geometric</h3>
+              <p>Patterns and shapes with mathematical precision</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="portfolio-item">
+            <img src="/fotos/whatercolor.jpg" alt="Watercolour Tattoo" />
+            <div class="portfolio-overlay">
+              <h3>Watercolour</h3>
+              <p>Paint-like designs with soft edges and vibrant splashes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+        <div class="contact-container">
+          <div class="contact-info">
+            <h3>Book Your Session</h3>
+            <p>
+              We're excited to create art for your skin. Contact us to schedule
+              a consultation or ask about our services.
+            </p>
+
+            <div class="contact-details">
+              <div>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>123 Artisan Lane, Downtown, Tallahassee, FL 32301</span>
+              </div>
+              <div>
+                <i class="fas fa-phone-alt"></i>
+                <span>(850) 555-0199</span>
+              </div>
+              <div>
+                <i class="fas fa-envelope"></i>
+                <span>info@studiobtattoos.com</span>
+              </div>
+              <div>
+                <i class="fas fa-clock"></i>
+                <span>Monday to Saturday: 10am to 7pm</span>
+              </div>
+            </div>
+
+            <div class="map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1719.8244336099588!2d-84.32266370160526!3d30.4460544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88ecf5b8ca3c317d%3A0x2e2007e538a19ba9!2sStudio%20B%20Tattoos%20and%20Piercings!5e0!3m2!1spt-BR!2sbr!4v1748870217938!5m2!1spt-BR!2sbr"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form id="bookingForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+
+              <div class="form-group">
+                <label for="artist">Preferred Artist</label>
+                <select id="artist" name="artist">
+                  <option value="">Any artist</option>
+                  <option value="James">James</option>
+                  <option value="Emily">Emily</option>
+                  <option value="Daniel">Daniel</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell us about your tattoo idea, preferred size and location..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="copyright">© 2025 Studio B Tattoos. All rights reserved.</p>
+        <p class="copyright">Designed with ❤️ in Tallahassee</p>
+      </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Your message has been sent successfully!</div>
+
+    <script>
+      // Menu Toggle Functionality
+      const menuToggle = document.querySelector(".menu-toggle");
+      const nav = document.querySelector("nav");
+
+      menuToggle.addEventListener("click", () => {
+        nav.classList.toggle("active");
+        menuToggle.innerHTML = nav.classList.contains("active") 
+          ? '<i class="fas fa-times"></i>' 
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close menu when clicking on a link
+      document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('active');
+          menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Carousel Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const carouselContainer = document.querySelector(".carousel-container");
+        const slides = document.querySelectorAll(".carousel-slide");
+        const prevBtn = document.querySelector(".carousel-prev");
+        const nextBtn = document.querySelector(".carousel-next");
+        const dotsContainer = document.querySelector(".carousel-dots");
+
+        if (!carouselContainer || !slides.length) return;
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        // Create navigation dots
+        for (let i = 0; i < totalSlides; i++) {
+          const dot = document.createElement("span");
+          dot.classList.add("carousel-dot");
+          if (i === 0) dot.classList.add("active");
+          dot.addEventListener("click", () => goToSlide(i));
+          dotsContainer.appendChild(dot);
+        }
+
+        const dots = document.querySelectorAll(".carousel-dot");
+
+        function updateCarousel() {
+          carouselContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+          
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+          });
+        }
+
+        function goToSlide(index) {
+          currentIndex = (index + totalSlides) % totalSlides;
+          updateCarousel();
+        }
+
+        function nextSlide() {
+          goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+          goToSlide(currentIndex - 1);
+        }
+
+        // Event listeners
+        nextBtn.addEventListener("click", nextSlide);
+        prevBtn.addEventListener("click", prevSlide);
+
+        // Auto-rotate
+        let interval = setInterval(nextSlide, 5000);
+
+        carouselContainer.addEventListener("mouseenter", () => {
+          clearInterval(interval);
+        });
+        
+        carouselContainer.addEventListener("mouseleave", () => {
+          interval = setInterval(nextSlide, 5000);
+        });
+
+        // Form submission
+        const bookingForm = document.getElementById('bookingForm');
+        const toast = document.getElementById('toast');
+        
+        bookingForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Form validation
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          
+          if(name.trim() === '' || email.trim() === '') {
+            alert('Please fill in all required fields');
+            return;
+          }
+          
+          // Simulate form submission
+          setTimeout(() => {
+            // Show success toast
+            toast.classList.add('show');
+            
+            // Reset form
+            bookingForm.reset();
+            
+            // Hide toast after 3 seconds
+            setTimeout(() => {
+              toast.classList.remove('show');
+            }, 3000);
+          }, 1000);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
